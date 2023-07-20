@@ -7,7 +7,7 @@ Convert::Convert():Convert("EndGame.json")
 
 Convert::Convert(string Txt) // @suppress("Class members should be properly initialized")
 {
-	MyFile.open(Txt.c_str(),std::ios_base::app );
+	MyFile.open(Txt.c_str(),ios_base::app | ios_base::binary);
 }
 Convert::~Convert()
 {
