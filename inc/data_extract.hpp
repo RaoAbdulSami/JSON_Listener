@@ -16,8 +16,6 @@ class data_extract :public data_header
 {
 protected:
 
-	int bf_sz;
-	unsigned char arr[128];
     uint64_t header;
 
 public:
