@@ -1,3 +1,4 @@
+#include "conversion.hpp"
 #include "client.hpp"
 
 int main()
@@ -5,6 +6,7 @@ int main()
 	int bts=0,x=0;
 	char* Msg;
 	Data_Retrieve Client(1500);
+	Convert Disp;
 	Client.Connection_verify();
 	while(x<400)
 	{
@@ -18,6 +20,7 @@ int main()
 			}
 			printf("\n");
 			x++;
+			Disp.send_to_JSon(bts,Msg);
 		}
 	}
 	return 0;
