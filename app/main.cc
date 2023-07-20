@@ -20,7 +20,7 @@ int main()
 			}
 			printf("\n");
 			x++;
-			Disp.send_to_JSon(bts,Msg);
+			Disp.send_to_JSon(Msg);
 		}
 	}
 	return 0;

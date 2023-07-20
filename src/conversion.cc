@@ -1,23 +1,21 @@
 #include "conversion.hpp"
 
-Convert::Convert()
+Convert::Convert():Convert("EndGame.json")
 {
 
+}
+
+Convert::Convert(string Txt) // @suppress("Class members should be properly initialized")
+{
+	MyFile.open(Txt.c_str(),std::ios_base::app );
 }
 Convert::~Convert()
 {
-
+	MyFile.close();
 }
-void Convert::send_to_JSon(int n,string msg)
+void Convert::send_to_JSon(string msg)
 {
 	incoming = msg;
-	byts = n;
-	ofstream MyFile("EndGame.json",std::ios_base::app );
-	for (int i=0;i<byts;i++)
-	{
-		MyFile << std::hex << (uint8_t)incoming[i]<<" ";
-	}
-	MyFile << "\t";
-	MyFile << byts;
-	MyFile.close();
+	MyFile << incoming;
+	MyFile << "\n";
 }

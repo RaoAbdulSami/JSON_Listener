@@ -12,12 +12,13 @@ class Convert
 {
 	private:
 		string incoming;
-		int byts;
+		ofstream MyFile;
 	protected:
 	public:
 		Convert();
+		Convert(string Txt);
 		~Convert();
-		void send_to_JSon(int n,string msg);
+		void send_to_JSon(string msg);
 };
 
 
