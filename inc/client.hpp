@@ -1,9 +1,3 @@
-/*
- * client.hpp
- *
- *  Created on: Jul 19, 2023
- *      Author: wamiq714
- */
 #ifndef INC_CLIENT_HPP_
 #define INC_CLIENT_HPP_
 #include <sys/socket.h>
@@ -17,6 +11,7 @@
 #include <errno.h>
 #include <arpa/inet.h>
 #include <string>
+#include <stdexcept>
 
 class Data_Retrieve
 {
@@ -24,19 +19,15 @@ class Data_Retrieve
 	int CreateSocket = 0,n = 0;
 	struct sockaddr_in ipOfServer;
 	protected:
-		char dataReceived[2048];
+		char dataReceived[1<<16];
 	public:
 		Data_Retrieve(int port, std::string && ip);
 		Data_Retrieve(int port);
 		Data_Retrieve();
 		void Connection_verify();
-		void Full_Data();
-		int bits();
+		int Poll_Server();
+		char* Get_Buffer();
 		~Data_Retrieve();
 };
-
-
-
-
 
 #endif /* INC_CLIENT_HPP_ */

@@ -8,7 +8,7 @@
 #include"data_extract.hpp"
 #include"data_header.hpp"
 
-data_header*dt1;
+
 
 
 
@@ -24,15 +24,16 @@ void data_extract::set_header(unsigned long long int upd_header)
 
 std::string data_extract:: extract_data(int buf_siz , char *buff)
 	{
+		data_header*dt1;
 		dt1 = (data_header*)buff;
 		std::string the_msg;
-		if(dt1->delimiter == header && dt1->length == (buf_siz-sizeof(dt1)))
+
+		if(dt1->delimiter == header && dt1->length == (buf_siz-sizeof(data_header)))
 		{
-			char * message = new char [buf_siz-sizeof(dt1)];
-			memcpy(message, buff+sizeof(dt1),buf_siz-sizeof(dt1));
+			char * message = new char [buf_siz-sizeof(data_header)];
+			memcpy(message, buff+sizeof(data_header),buf_siz-sizeof(data_header));
 			for(size_t i=0 ;i<dt1->length;i++)
 			{
-				std::cout<< message[i];
 				the_msg+= message[i];
 			}
 			delete [] message;
