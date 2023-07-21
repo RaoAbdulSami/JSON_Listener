@@ -4,7 +4,6 @@
 
 int main(int argc , char *argv[])
 {
-
 	int bts=0;
 	char* Msg;
 	std::string fetched_msg;
@@ -39,6 +38,7 @@ int main(int argc , char *argv[])
 				fetched_msg = fetch.extract_data(bts , Msg);
 				Disp.send_to_JSon(fetched_msg);
 			}
+
 		}
 	}
 	return 0;
