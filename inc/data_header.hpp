@@ -11,10 +11,10 @@
 #include <array>
 
 struct data_header
-		{
-			uint64_t delimiter;
-			uint32_t type;
-			uint32_t length;
-		};
+{
+	uint64_t delimiter;
+	uint32_t type;
+	uint32_t length;
+};
 
 #endif /* INCLUDE_DATA_HEADER_HPP_ */

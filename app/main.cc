@@ -1,26 +1,40 @@
 #include "conversion.hpp"
 #include "client.hpp"
+#include "data_extract.hpp"
 
-int main()
+int main(int argc , char *argv[])
 {
-	int bts=0,x=0;
+	int bts=0
 	char* Msg;
+	std::string fetched_msg;
 	Data_Retrieve Client(1500);
 	Convert Disp;
+	data_extract fetch;
 	Client.Connection_verify();
-	while(x<400)
+	if (argc == 1)
 	{
-		bts = Client.Poll_Server();
-		if (bts>0)
+		while(1)
 		{
-			Msg = Client.Get_Buffer();
-			for(int i=0 ;i<bts;i++)
+			bts = Client.Poll_Server();
+			if (bts > 0)
 			{
-				printf("%x ",(uint8_t)Msg[i]);
+				Msg = Client.Get_Buffer();
+				fetched_msg = fetch.extract_data(bts,Msg);
+				Disp.send_to_JSon(fetched_msg);
 			}
-			printf("\n");
-			x++;
-			Disp.send_to_JSon(Msg);
+		}
+	}
+	else
+	{
+		for(int i = 0 ; i< stoi(argv[1]) ; i++)
+		{
+			bts = Client.Poll_Server();
+			if (bts > 0)
+			{
+				Msg = Client.Get_Buffer();
+				fetched_msg = fetch.extract_data(bts,Msg);
+				Disp.send_to_JSon(fetched_msg);
+			}
 		}
 	}
 	return 0;

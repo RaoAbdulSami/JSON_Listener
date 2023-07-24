@@ -9,21 +9,17 @@
 #include"data_header.hpp"
 
 data_header*dt1;
-
-
-
 data_extract::data_extract()
-	{
+{
 		header = 0xDEADBEEFBEEFFEED;
-	}
+}
 void data_extract::set_header(unsigned long long int upd_header)
-	{
+{
 		header = upd_header;
-	}
-
+}
 
 std::string data_extract:: extract_data(int buf_siz , char *buff)
-	{
+{
 		dt1 = (data_header*)buff;
 		std::string the_msg;
 		if(dt1->delimiter == header && dt1->length == (buf_siz-sizeof(dt1)))
@@ -39,7 +35,6 @@ std::string data_extract:: extract_data(int buf_siz , char *buff)
 			dt1 = nullptr;
 
 		}
-
 		return the_msg;
-	}
+}
 

@@ -9,23 +9,16 @@
 #ifndef INCLUDE_DATA_EXTRACT_HPP_
 #define INCLUDE_DATA_EXTRACT_HPP_
 #include <cstring>
-
 #include"data_header.hpp"
 
 class data_extract :public data_header
 {
-protected:
+	protected:
+		uint64_t header;
 
-    uint64_t header;
-
-public:
-    data_extract();
-	void set_header(unsigned long long int upd_header);
-	std::string extract_data(int buf_siz , char *buff);
-
-
+	public:
+		data_extract();
+		void set_header(unsigned long long int upd_header);
+		std::string extract_data(int buf_siz , char *buff);
 };
-
-
-
 #endif /* INCLUDE_DATA_EXTRACT_HPP_ */
