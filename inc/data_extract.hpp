@@ -21,5 +21,4 @@ class data_extract :public data_header
 		void set_header(unsigned long long int upd_header);
 		std::string extract_data(int buf_siz , char *buff);
 };
-
 #endif /* INCLUDE_DATA_EXTRACT_HPP_ */
